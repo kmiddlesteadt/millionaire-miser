@@ -1,0 +1,15 @@
+.auth-page {
+  display: grid;
+  min-height: calc(100vh - 64px);
+  place-items: center;
+  padding: 24px;
+}
+
+.auth-card {
+  width: min(100%, 440px);
+  border-radius: 8px;
+}
+
+mat-card-content {
+  padding-top: 20px;
+}

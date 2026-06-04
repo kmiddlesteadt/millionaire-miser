@@ -1,0 +1,70 @@
+<main class="page">
+  <header class="page-header">
+    <div>
+      <h1 class="page-title">Cart</h1>
+      <p class="muted">Review quantities before creating an order.</p>
+    </div>
+    <a mat-stroked-button routerLink="/products">
+      <mat-icon>arrow_back</mat-icon>
+      Products
+    </a>
+  </header>
+
+  @if (cart.items().length === 0) {
+    <mat-card appearance="outlined" class="empty-card">
+      <mat-card-content>
+        <mat-icon>remove_shopping_cart</mat-icon>
+        <p>Your cart is empty.</p>
+      </mat-card-content>
+    </mat-card>
+  } @else {
+    <section class="grid two-column">
+      <mat-card appearance="outlined">
+        <mat-list>
+          @for (item of cart.items(); track item.product.id) {
+            <mat-list-item>
+              <mat-icon matListItemIcon>inventory_2</mat-icon>
+              <div matListItemTitle>{{ item.product.name }}</div>
+              <div matListItemLine>{{ item.product.price | currency }} each</div>
+              <div class="quantity-actions">
+                <button mat-icon-button type="button" aria-label="Decrease quantity" (click)="cart.changeQuantity(item.product.id, item.quantity - 1)">
+                  <mat-icon>remove</mat-icon>
+                </button>
+                <span>{{ item.quantity }}</span>
+                <button mat-icon-button type="button" aria-label="Increase quantity" (click)="cart.changeQuantity(item.product.id, item.quantity + 1)">
+                  <mat-icon>add</mat-icon>
+                </button>
+                <button mat-icon-button type="button" aria-label="Remove item" (click)="cart.remove(item.product.id)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </div>
+            </mat-list-item>
+            <mat-divider />
+          }
+        </mat-list>
+      </mat-card>
+
+      <mat-card appearance="outlined" class="summary-card">
+        <mat-card-header>
+          <mat-card-title>Summary</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p class="summary-row">
+            <span>Items</span>
+            <strong>{{ cart.count() }}</strong>
+          </p>
+          <p class="summary-row">
+            <span>Total</span>
+            <strong>{{ cart.total() | currency }}</strong>
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-flat-button type="button" [disabled]="submitting()" (click)="checkout()">
+            <mat-icon>payments</mat-icon>
+            Checkout
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </section>
+  }
+</main>

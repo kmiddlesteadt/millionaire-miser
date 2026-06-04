@@ -1,0 +1,37 @@
+mat-card {
+  border-radius: 8px;
+}
+
+.admin-layout {
+  grid-template-columns: 380px minmax(0, 1fr);
+}
+
+.inline-fields {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 1fr 1fr;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+}
+
+.orders-card {
+  margin-top: 16px;
+}
+
+.status-field {
+  width: 160px;
+  margin-top: 16px;
+}
+
+@media (max-width: 920px) {
+  .admin-layout,
+  .inline-fields {
+    grid-template-columns: 1fr;
+  }
+}

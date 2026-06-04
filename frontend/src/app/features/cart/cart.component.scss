@@ -1,0 +1,34 @@
+mat-card {
+  border-radius: 8px;
+}
+
+.quantity-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+}
+
+.summary-card {
+  align-self: start;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  margin: 14px 0;
+}
+
+.empty-card mat-card-content {
+  display: grid;
+  min-height: 180px;
+  place-items: center;
+  text-align: center;
+}
+
+.empty-card mat-icon {
+  color: #687380;
+  font-size: 42px;
+  height: 42px;
+  width: 42px;
+}

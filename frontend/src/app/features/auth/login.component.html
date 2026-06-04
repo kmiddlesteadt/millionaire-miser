@@ -1,0 +1,37 @@
+<main class="auth-page">
+  <mat-card appearance="outlined" class="auth-card">
+    <mat-card-header>
+      <mat-card-title>Login</mat-card-title>
+      <mat-card-subtitle>Use the seeded demo account or your own registered user.</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <form class="form" [formGroup]="form" (ngSubmit)="submit()">
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" formControlName="email" autocomplete="email">
+          <mat-icon matSuffix>mail</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" formControlName="password" autocomplete="current-password">
+          <mat-icon matSuffix>lock</mat-icon>
+        </mat-form-field>
+
+        @if (error()) {
+          <p class="error">{{ error() }}</p>
+        }
+
+        <button mat-flat-button type="submit" [disabled]="loading()">
+          <mat-icon>login</mat-icon>
+          Login
+        </button>
+      </form>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <a mat-button routerLink="/register">Create account</a>
+    </mat-card-actions>
+  </mat-card>
+</main>
